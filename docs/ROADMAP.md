@@ -4,10 +4,11 @@
 
 ## Current Status
 
-- **Active Phase:** Phase 0 — Discovery, Design & Project Foundation
-- **Completed:** AI mentor setup (`AGENTS.md`, `README.md`, `docs/ROADMAP.md`), design spec (`docs/DESIGN.md`), and domain model + RBAC + SEO URLs (`docs/DOMAIN.md`)
-- **Current Step:** Verify local environment (Node.js, npm, Git) and initialize Git repository
-- **Next Up:** Initialize Phase 1 Node.js + TypeScript + Express modular monolith and first GitHub Actions CI pipeline
+- **Active Phase:** Phase 1 — Backend Stage 1 (Express Modular Monolith)
+- **Completed:** Phase 0 complete (`AGENTS.md`, `README.md`, `docs/DESIGN.md`, `docs/DOMAIN.md`, local env verified, Git initialized on `main`)
+- **Git Workflow:** `main` (stable) <- `develop` (integration) <- `feature/*` (task branches merged into `develop`)
+- **Current Step:** Create `develop` branch, then start Phase 1 (`feature/backend-init`: Node.js + TypeScript + Express + ESLint/Prettier)
+- **Next Up:** Scaffold Express backend, configure TypeScript strict mode + ESLint/Prettier, connect GitHub remote, and set up GitHub Actions CI
 
 ## Phase 0 — Discovery, Design & Foundation
 
@@ -16,7 +17,7 @@
 - [x] Choose visual and UX design reference (Vasco minimalist aesthetic + full B2C/B2B e-commerce UX)
 - [x] Document top radiator buyer pain points and key store screens (`docs/DESIGN.md`)
 - [x] Design radiator domain model, barcodes, RBAC roles, and SEO URL structure (`docs/DOMAIN.md`)
-- [ ] Verify local environment (Node.js, npm, Git) and initialize Git repository (`.gitignore`, initial commit)
+- [x] Verify local environment (Node.js, npm, Git) and initialize Git repository (`.gitignore`, initial commit)
 
 ## Phase 1 — Backend Stage 1 (Express Modular Monolith)
 
