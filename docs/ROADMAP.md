@@ -5,10 +5,10 @@
 ## Current Status
 
 - **Active Phase:** Phase 1 — Backend Stage 1 (Express Modular Monolith)
-- **Completed:** Phase 0 complete (`AGENTS.md`, `README.md`, `docs/DESIGN.md`, `docs/DOMAIN.md`, local env verified, Git initialized on `main`)
+- **Completed:** Phase 0 complete; Phase 1 Step 1 complete (Express 5 + TypeScript 6 backend with `/api/health`, security headers/CORS, ESLint 10, Prettier 3 merged into `develop`)
 - **Git Workflow:** `main` (stable) <- `develop` (integration) <- `feature/*` (task branches merged into `develop`)
-- **Current Step:** Create `develop` branch, then start Phase 1 (`feature/backend-init`: Node.js + TypeScript + Express + ESLint/Prettier)
-- **Next Up:** Scaffold Express backend, configure TypeScript strict mode + ESLint/Prettier, connect GitHub remote, and set up GitHub Actions CI
+- **Current Step:** Set up GitHub remote repository and first GitHub Actions CI pipeline (`build`, `lint`, `format:check`)
+- **Next Up:** Structure modular monolith boundaries (`catalog`, `calculator`, `orders`, `accounts`, `integrations`) and implement first radiator catalog endpoints
 
 ## Phase 0 — Discovery, Design & Foundation
 
@@ -21,7 +21,7 @@
 
 ## Phase 1 — Backend Stage 1 (Express Modular Monolith)
 
-- [ ] Initialize Node.js + TypeScript + Express project with ESLint and Prettier
+- [x] Initialize Node.js + TypeScript + Express project with ESLint and Prettier
 - [ ] Set up GitHub repository and first GitHub Actions CI pipeline (lint + build)
 - [ ] Structure modular boundaries (`catalog`, `calculator`, `orders`, `accounts`, `integrations`)
 - [ ] Connect database and implement radiator catalog REST API (filters, pagination, slugs)
