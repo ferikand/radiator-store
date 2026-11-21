@@ -5,10 +5,10 @@
 ## Current Status
 
 - **Active Phase:** Phase 1 — Backend Stage 1 (Express Modular Monolith)
-- **Completed:** Phase 0 complete; Phase 1 Step 1 complete (Express 5 + TypeScript 6 backend with `/api/health`, security headers/CORS, ESLint 10, Prettier 3 merged into `develop`)
+- **Completed:** Phase 0 complete; Phase 1 Steps 1–2 complete (Express 5 + TypeScript 6 backend with ESLint 10 + Prettier 3; GitHub repo & green GitHub Actions CI pipeline)
 - **Git Workflow:** `main` (stable) <- `develop` (integration) <- `feature/*` (task branches merged into `develop`)
-- **Current Step:** Set up GitHub remote repository and first GitHub Actions CI pipeline (`build`, `lint`, `format:check`)
-- **Next Up:** Structure modular monolith boundaries (`catalog`, `calculator`, `orders`, `accounts`, `integrations`) and implement first radiator catalog endpoints
+- **Current Step:** Structure modular monolith boundaries (`catalog`, `calculator`, `orders`, `accounts`, `integrations`) and implement first radiator catalog endpoints
+- **Next Up:** Connect database and implement radiator catalog REST API (filters, pagination, slugs) for Rhein & Evro-Termo
 
 ## Phase 0 — Discovery, Design & Foundation
 
@@ -22,7 +22,7 @@
 ## Phase 1 — Backend Stage 1 (Express Modular Monolith)
 
 - [x] Initialize Node.js + TypeScript + Express project with ESLint and Prettier
-- [ ] Set up GitHub repository and first GitHub Actions CI pipeline (lint + build)
+- [x] Set up GitHub repository and first GitHub Actions CI pipeline (lint + build)
 - [ ] Structure modular boundaries (`catalog`, `calculator`, `orders`, `accounts`, `integrations`)
 - [ ] Connect database and implement radiator catalog REST API (filters, pagination, slugs)
 - [ ] Implement heat-output calculator logic, role-based B2C/B2B pricing, and order submission endpoints
