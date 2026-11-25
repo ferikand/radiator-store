@@ -5,10 +5,10 @@
 ## Current Status
 
 - **Active Phase:** Phase 1 — Backend Stage 1 (Express Modular Monolith)
-- **Completed:** Phase 0 complete; Phase 1 Steps 1–3 complete (Express 5 + TypeScript 6 backend with ESLint 10 + Prettier 3; GitHub repo & green CI pipeline; modular monolith structure with initial catalog API, Type Guards, and global error handler)
+- **Completed:** Phase 0 complete; Phase 1 Steps 1–4 complete (Express 5 + TypeScript 6 backend with ESLint 10 + Prettier 3; GitHub Actions CI; modular catalog API backed by Docker PostgreSQL 17 + Prisma 7 with filters, pagination, slugs, idempotent seeding, and OpenAPI 3.0 + Swagger UI at `/api-docs`)
 - **Git Workflow:** `main` (stable) <- `develop` (integration) <- `feature/*` (task branches merged into `develop`)
-- **Current Step:** Connect database and migrate radiator catalog REST API to persistent storage (filters, pagination, slugs)
-- **Next Up:** Implement heat-output calculator logic, role-based B2C/B2B pricing, and order submission endpoints
+- **Current Step:** Implement heat-output calculator logic, role-based B2C/B2B pricing, product view tracking, and order submission endpoints
+- **Next Up:** Define business process and API integration contracts (warehouse stock/orders, carrier booking, shipping/expense documents)
 
 ## Phase 0 — Discovery, Design & Foundation
 
@@ -24,7 +24,7 @@
 - [x] Initialize Node.js + TypeScript + Express project with ESLint and Prettier
 - [x] Set up GitHub repository and first GitHub Actions CI pipeline (lint + build)
 - [x] Structure modular boundaries (`catalog`, `calculator`, `orders`, `accounts`, `integrations`)
-- [ ] Connect database and implement radiator catalog REST API (filters, pagination, slugs)
+- [x] Connect database and implement radiator catalog REST API (filters, pagination, slugs)
 - [ ] Implement heat-output calculator logic, role-based B2C/B2B pricing, and order submission endpoints
 - [ ] Define business process and API integration contracts (warehouse stock/orders, carrier booking, shipping/expense documents)
 
