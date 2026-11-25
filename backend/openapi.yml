@@ -1,0 +1,187 @@
+openapi: 3.0.3
+info:
+  title: Store API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/health:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  service:
+                    type: string
+                  timestamp:
+                    type: string
+                    format: date-time
+  /api/products:
+    get:
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+            enum: [steel-panel, aluminum, bimetallic, accessories]
+        - name: brand
+          in: query
+          schema:
+            type: string
+            enum: [Rhein, Evro-Termo]
+        - name: page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 12
+            minimum: 1
+            maximum: 50
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedProducts'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/products/{slug}:
+    get:
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        sku:
+          type: string
+        barcode:
+          type: string
+        slug:
+          type: string
+        name:
+          type: string
+        brand:
+          type: string
+          enum: [Rhein, Evro-Termo]
+        category:
+          type: string
+          enum: [steel-panel, aluminum, bimetallic, accessories]
+        retailPriceUah:
+          type: integer
+        stockQty:
+          type: integer
+        warrantyYears:
+          type: integer
+        sellingRules:
+          type: object
+          properties:
+            unitType:
+              type: string
+              enum: [piece, section, kit]
+            packSize:
+              type: integer
+          required:
+            - unitType
+            - packSize
+        logistics:
+          type: object
+          properties:
+            netWeightKg:
+              type: number
+            grossWeightKg:
+              type: number
+            widthCm:
+              type: number
+            heightCm:
+              type: number
+            depthCm:
+              type: number
+          required:
+            - netWeightKg
+            - grossWeightKg
+            - widthCm
+            - heightCm
+            - depthCm
+        specs:
+          type: object
+          additionalProperties: true
+      required:
+        - id
+        - sku
+        - barcode
+        - slug
+        - name
+        - brand
+        - category
+        - retailPriceUah
+        - stockQty
+        - warrantyYears
+        - sellingRules
+        - logistics
+        - specs
+    PaginatedProducts:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        total:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+        totalPages:
+          type: integer
+      required:
+        - items
+        - total
+        - page
+        - limit
+        - totalPages

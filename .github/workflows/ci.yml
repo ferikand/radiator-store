@@ -28,4 +28,6 @@ jobs:
             - name: Run format:check
               run: npm run format:check
             - name: Run build
+              env:
+                  DATABASE_URL: postgresql://ci:ci@localhost:5432/ci
               run: npm run build

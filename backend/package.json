@@ -6,12 +6,13 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
+    "build": "prisma generate --no-hints && tsc",
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "format": "prettier --write src eslint.config.js ",
-    "format:check": "prettier --check src eslint.config.js"
+    "format:check": "prettier --check src eslint.config.js",
+    "db:seed": "tsx src/db/seed.ts"
   },
   "keywords": [],
   "author": "",
