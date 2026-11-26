@@ -34,4 +34,5 @@ export interface Product {
   sellingRules: SellingRules;
   logistics: ProductLogistics;
   specs: Record<string, string | number | boolean>;
+  viewsCount: number;
 }

@@ -1,6 +1,6 @@
 import type { Product } from './catalog.types.js';
 
-export const products: Product[] = [
+export const products: Omit<Product, 'viewsCount'>[] = [
   {
     id: '1',
     sku: 'C22500x100',

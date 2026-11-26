@@ -1,6 +1,8 @@
 import { prisma } from '../../lib/prisma.js';
 import type { Product, ProductCategory, ProductBrand, SellingUnit } from './catalog.types.js';
-import type { Prisma, Product as PrismaProduct } from '../../generated/prisma/client.js';
+import type { Product as PrismaProduct } from '../../generated/prisma/client.js';
+import { Prisma } from '../../generated/prisma/client.js';
+
 export interface ProductFilters {
   category?: ProductCategory;
   brand?: ProductBrand;
@@ -14,6 +16,26 @@ export interface PaginatedProducts {
   page: number;
   limit: number;
   totalPages: number;
+}
+
+export interface ProductViews {
+  slug: string;
+  viewsCount: number;
+}
+
+export async function incrementProductViews(slug: string): Promise<ProductViews | undefined> {
+  try {
+    return await prisma.product.update({
+      where: { slug },
+      data: { viewsCount: { increment: 1 } },
+      select: { slug: true, viewsCount: true },
+    });
+  } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025') {
+      return undefined;
+    }
+    throw error;
+  }
 }
 
 export async function getProducts(filters: ProductFilters = {}): Promise<PaginatedProducts> {
@@ -73,6 +95,7 @@ export function toProductDto(row: PrismaProduct): Product {
       packSize: row.packSize,
     },
     specs: row.specs as Record<string, string | number | boolean>,
+    viewsCount: row.viewsCount,
   };
   return dto;
 }

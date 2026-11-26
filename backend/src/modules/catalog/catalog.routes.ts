@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getProducts, getProductBySlug } from './catalog.service.js';
+import { getProducts, getProductBySlug, incrementProductViews } from './catalog.service.js';
 import type { ProductFilters } from './catalog.service.js';
 import type { ProductBrand, ProductCategory } from './catalog.types.js';
 import { PRODUCT_CATEGORIES, PRODUCT_BRANDS } from './catalog.types.js';
@@ -60,6 +60,7 @@ catalogRouter.get('/', async (req, res) => {
   const result = await getProducts(filters);
   res.status(200).json(result);
 });
+
 catalogRouter.get('/:slug', async (req, res) => {
   const product = await getProductBySlug(req.params.slug);
   if (!product) {
@@ -67,4 +68,16 @@ catalogRouter.get('/:slug', async (req, res) => {
     return;
   }
   res.status(200).json(product);
+});
+
+catalogRouter.post('/:slug/view', async (req, res) => {
+  const slug = req.params.slug;
+  const result = await incrementProductViews(slug);
+
+  if (!result) {
+    res.status(404).json({ error: 'Product not found' });
+    return;
+  }
+
+  res.status(200).json(result);
 });
