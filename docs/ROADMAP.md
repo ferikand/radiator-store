@@ -5,9 +5,9 @@
 ## Current Status
 
 - **Active Phase:** Phase 1 — Backend Stage 1 (Express Modular Monolith)
-- **Completed:** Phase 0 complete; Phase 1 Steps 1–4 complete (Express 5 + TypeScript 6 backend with ESLint 10 + Prettier 3; GitHub Actions CI; modular catalog API backed by Docker PostgreSQL 17 + Prisma 7 with filters, pagination, slugs, idempotent seeding, and OpenAPI 3.0 + Swagger UI at `/api-docs`)
+- **Completed:** Phase 0 complete; Phase 1 Steps 1–4 complete + product view tracking (Express 5 + TypeScript 6 backend with ESLint 10 + Prettier 3; GitHub Actions CI; modular catalog API backed by Docker PostgreSQL 17 + Prisma 7 with filters, pagination, slugs, idempotent seeding, atomic `POST /api/products/:slug/view` counter, and OpenAPI 3.0 + Swagger UI at `/api-docs`)
 - **Git Workflow:** `main` (stable) <- `develop` (integration) <- `feature/*` (task branches merged into `develop`)
-- **Current Step:** Implement heat-output calculator logic, role-based B2C/B2B pricing, product view tracking, and order submission endpoints
+- **Current Step:** Implement heat-output calculator logic, role-based B2C/B2B pricing, and order submission endpoints
 - **Next Up:** Define business process and API integration contracts (warehouse stock/orders, carrier booking, shipping/expense documents)
 
 ## Phase 0 — Discovery, Design & Foundation
