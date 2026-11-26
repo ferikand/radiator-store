@@ -82,6 +82,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /api/products/{slug}/view:
+    post:
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductViews'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
     ErrorResponse:
@@ -150,6 +171,9 @@ components:
         specs:
           type: object
           additionalProperties: true
+        viewsCount:
+          type: integer
+          minimum: 0
       required:
         - id
         - sku
@@ -164,6 +188,7 @@ components:
         - sellingRules
         - logistics
         - specs
+        - viewsCount
     PaginatedProducts:
       type: object
       properties:
@@ -185,3 +210,14 @@ components:
         - page
         - limit
         - totalPages
+    ProductViews:
+      type: object
+      properties:
+        slug:
+          type: string
+        viewsCount:
+          type: integer
+          minimum: 0
+      required:
+        - slug
+        - viewsCount
